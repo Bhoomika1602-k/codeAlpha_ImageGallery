@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Image Gallery - Professional Photography Collection</title>
+    <meta name="description" content="Explore our curated collection of professional photography featuring nature, architecture, abstract art, and portrait photography. Interactive gallery with lightbox view and category filtering.">
+    <meta property="og:title" content="Modern Image Gallery - Professional Photography Collection">
+    <meta property="og:description" content="Discover stunning photography in our interactive gallery with nature, architecture, abstract, and portrait categories.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1 class="gallery-title">Gallery</h1>
+                    <span class="gallery-subtitle">Professional Photography Collection</span>
+                </div>
+                <div class="header-right">
+                    <span class="image-count" id="imageCount">24 Images</span>
+                    <button class="search-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Tabs -->
+    <nav class="filter-nav">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">
+                    All Photos <span class="badge">24</span>
+                </button>
+                <button class="filter-tab" data-category="nature">
+                    Nature <span class="badge">8</span>
+                </button>
+                <button class="filter-tab" data-category="architecture">
+                    Architecture <span class="badge">6</span>
+                </button>
+                <button class="filter-tab" data-category="abstract">
+                    Abstract <span class="badge">4</span>
+                </button>
+                <button class="filter-tab" data-category="portrait">
+                    Portraits <span class="badge">6</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Gallery -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Loading State -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <span>Loading images...</span>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Images will be populated by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <h3>No images found</h3>
+                <p>Try selecting a different category.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <!-- Close Button -->
+            <button class="lightbox-close" id="lightboxClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Previous Button -->
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15,18 9,12 15,6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Next Button -->
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Image Container -->
+            <div class="lightbox-image-container">
+                <img class="lightbox-image" id="lightboxImage" src="" alt="">
+            </div>
+
+            <!-- Image Info -->
+            <div class="lightbox-info">
+                <h3 class="lightbox-title" id="lightboxTitle"></h3>
+                <p class="lightbox-description" id="lightboxDescription"></p>
+                
+                <div class="lightbox-meta">
+                    <span class="lightbox-counter" id="lightboxCounter">1 of 24</span>
+                    
+                    <div class="lightbox-actions">
+                        <button class="action-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7,10 12,15 17,10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download
+                        </button>
+                        
+                        <button class="action-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            Like
+                        </button>
+                    </div>
+                    
+                    <span class="category-badge" id="lightboxCategory">nature</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
